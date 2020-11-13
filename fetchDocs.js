@@ -3,6 +3,7 @@ const fse = require('fs-extra');
 const path = require('path');
 const md = require('markdown-it')({ typographer: true });
 const slugify = require('slugify');
+const sh = require('shelljs');
 
 // TODO: pick from automation
 const srcDir = `/Users/arjun/playwright/docs`;
@@ -149,10 +150,23 @@ function writeSidebarFile(apiSidebar, docsSidebar) {
   fse.writeFileSync(sidebarFile, content);
 }
 
+function copyFiles() {
+  const currentDir = sh.pwd().stdout;
+  sh.cd(srcDir);
+  const tag = process.env.VERSION ? `tags/v${process.env.VERSION}` : `master`;
+  const result = sh.exec(`git checkout ${tag}`);
+  if (result.code !== 0) {
+    console.warn(`git checkout to ${tag} failed. Check source repo.`);
+    process.exit(1);
+  }
+  sh.cd(currentDir);
+  fse.copySync(srcDir, destDir);
+}
+
 // Main
 fse.mkdirpSync(destDir);
 fse.emptyDirSync(destDir);
-fse.copySync(srcDir, destDir);
+copyFiles();
 keepOnlyMarkdownFiles(destDir);
 
 // Transform API reference

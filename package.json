@@ -20,6 +20,7 @@
     "markdown-it-title": "^3.0.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "shelljs": "^0.8.4",
     "slugify": "^1.4.6"
   },
   "browserslist": {
