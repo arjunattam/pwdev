@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Docusaurus v2.0.0-alpha.66">
+<link rel="search" type="application/opensearchdescription+xml" title="Playwright" href="/pwdev/opensearch.xml">
+<script src="js/redirection.js"></script><title data-react-helmet="true">Supported click scenarios | Playwright</title><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"><meta data-react-helmet="true" name="docsearch:language" content="en"><meta data-react-helmet="true" name="docsearch:version" content="1.6.0"><meta data-react-helmet="true" name="docsearch:docusaurus_tag" content="docs-default-1.6.0"><meta data-react-helmet="true" property="og:title" content="Supported click scenarios | Playwright"><meta data-react-helmet="true" name="description" content="Supported click scenarios"><meta data-react-helmet="true" property="og:description" content="Supported click scenarios"><meta data-react-helmet="true" property="og:url" content="https://arjunattam.github.io/pwdev/docs/1.6.0/development/click"><link data-react-helmet="true" rel="shortcut icon" href="/pwdev/img/playwright-logo.svg"><link data-react-helmet="true" rel="preconnect" href="https://BH4D9OD16A-dsn.algolia.net" crossorigin="anonymous"><link data-react-helmet="true" rel="canonical" href="https://arjunattam.github.io/pwdev/docs/1.6.0/development/click"><link rel="stylesheet" href="/pwdev/styles.fe0d5519.css">
+<link rel="preload" href="/pwdev/styles.b22cf2e2.js" as="script">
+<link rel="preload" href="/pwdev/runtime~main.3a5fc328.js" as="script">
+<link rel="preload" href="/pwdev/main.6809d955.js" as="script">
+<link rel="preload" href="/pwdev/1.13f92296.js" as="script">
+<link rel="preload" href="/pwdev/2.e3aa1740.js" as="script">
+<link rel="preload" href="/pwdev/548.5dfb922d.js" as="script">
+<link rel="preload" href="/pwdev/551.36aac119.js" as="script">
+<link rel="preload" href="/pwdev/1bac6c43.36d9e880.js" as="script">
+<link rel="preload" href="/pwdev/17896441.d2fde38e.js" as="script">
+<link rel="preload" href="/pwdev/304126c4.89c0daa3.js" as="script">
+</head>
+<body>
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}()</script><div id="__docusaurus">
+<nav class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><div aria-label="Navigation bar toggle" class="navbar__toggle" role="button" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></div><a class="navbar__brand" href="/pwdev/"><img class="navbar__logo" src="/pwdev/img/playwright-logo.svg" alt="Playwright logo"><strong class="navbar__title">Playwright</strong></a><a class="navbar__item navbar__link" href="/pwdev/docs/1.6.0/intro">Docs</a><a class="navbar__item navbar__link" href="/pwdev/docs/1.6.0/api/playwright-module">API</a><div class="navbar__item dropdown dropdown--hoverable dropdown--left"><a class="navbar__item navbar__link" href="/pwdev/docs/1.6.0/why-playwright">1.6.0</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/pwdev/docs/next/development/click">Next</a></li><li><a class="dropdown__link" href="/pwdev/docs/development/click">1.3.0</a></li><li><a class="dropdown__link" href="/pwdev/docs/1.4.0/development/click">1.4.0</a></li><li><a class="dropdown__link" href="/pwdev/docs/1.5.0/development/click">1.5.0</a></li><li><a class="dropdown__link" href="/pwdev/docs/1.5.1/development/click">1.5.1</a></li><li><a class="dropdown__link" href="/pwdev/docs/1.5.2/development/click">1.5.2</a></li><li><a aria-current="page" class="dropdown__link dropdown__link--active" href="/pwdev/docs/1.6.0/development/click">1.6.0</a></li><li><a class="dropdown__link" href="/pwdev/docs/1.6.1/development/click">1.6.1</a></li><li><a class="dropdown__link" href="/pwdev/versions">All versions</a></li></ul></div></div><div class="navbar__items navbar__items--right"><a class="navbar__item navbar__link" href="/pwdev/blog">Blog</a><a href="https://github.com/microsoft/playwright" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub</a><div class="react-toggle react-toggle--disabled displayOnlyInLargeViewport_2aTZ"><div class="react-toggle-track"><div class="react-toggle-track-check"><span class="toggle_BsTx">🌜</span></div><div class="react-toggle-track-x"><span class="toggle_BsTx">🌞</span></div></div><div class="react-toggle-thumb"></div><input type="checkbox" disabled="" aria-label="Dark mode toggle" class="react-toggle-screenreader-only"></div><button type="button" class="DocSearch DocSearch-Button" aria-label="Search"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span><span class="DocSearch-Button-Key">⌘</span><span class="DocSearch-Button-Key">K</span></button></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div><div class="navbar-sidebar"><div class="navbar-sidebar__brand"><a class="navbar__brand" href="/pwdev/"><img class="navbar__logo" src="/pwdev/img/playwright-logo.svg" alt="Playwright logo"><strong class="navbar__title">Playwright</strong></a></div><div class="navbar-sidebar__items"><div class="menu"><ul class="menu__list"><li class="menu__list-item"><a class="menu__link" href="/pwdev/docs/1.6.0/intro">Docs</a></li><li class="menu__list-item"><a class="menu__link" href="/pwdev/docs/1.6.0/api/playwright-module">API</a></li><li class="menu__list-item"><a class="menu__link" href="/pwdev/blog">Blog</a></li><li class="menu__list-item"><a href="https://github.com/microsoft/playwright" target="_blank" rel="noopener noreferrer" class="menu__link">GitHub</a></li><li class="menu__list-item"><a role="button" class="menu__link menu__link--sublist">Versions</a><ul class="menu__list"><li class="menu__list-item"><a class="menu__link" href="/pwdev/docs/next/development/click">Next</a></li><li class="menu__list-item"><a class="menu__link" href="/pwdev/docs/development/click">1.3.0</a></li><li class="menu__list-item"><a class="menu__link" href="/pwdev/docs/1.4.0/development/click">1.4.0</a></li><li class="menu__list-item"><a class="menu__link" href="/pwdev/docs/1.5.0/development/click">1.5.0</a></li><li class="menu__list-item"><a class="menu__link" href="/pwdev/docs/1.5.1/development/click">1.5.1</a></li><li class="menu__list-item"><a class="menu__link" href="/pwdev/docs/1.5.2/development/click">1.5.2</a></li><li class="menu__list-item"><a aria-current="page" class="menu__link menu__link--active" href="/pwdev/docs/1.6.0/development/click">1.6.0</a></li><li class="menu__list-item"><a class="menu__link" href="/pwdev/docs/1.6.1/development/click">1.6.1</a></li><li class="menu__list-item"><a class="menu__link" href="/pwdev/versions">All versions</a></li></ul></li></ul></div></div></div></nav><div class="main-wrapper"><div class="docPage_2gpo"><main class="docMainContainer_3EyW"><div class="container padding-vert--lg docItemWrapper_1EkI"><div class="row"><div class="col docItemCol_2ASc"><div class="alert alert--warning margin-bottom--md" role="alert"><div>This is documentation for Playwright <strong>1.6.0</strong>, which is no longer actively maintained.</div><div class="margin-top--md">For up-to-date documentation, see the <strong><a href="/pwdev/docs/development/click">latest version</a></strong> (1.3.0).</div></div><div class="docItemContainer_3QWW"><article><div><span class="badge badge--secondary">Version: 1.6.0</span></div><header><h1 class="docTitle_1Lrw">Supported click scenarios</h1></header><div class="markdown"><h2 id="supported-click-scenarios">Supported click scenarios</h2><p>These are some of the corner cases that Playwright aims to support.</p><h3 id="positioning">Positioning</h3><ul><li><p>Element is outside of the viewport.</p><pre><code class="language-html">&lt;div style=&quot;height: 2000px;&quot;&gt;Some content&lt;/div&gt;
+&lt;button&gt;Click me&lt;/button&gt;
+</code></pre><p>Playwright scrolls the element into the viewport if at all possible.</p></li><li><p>Empty element with non-empty pseudo.</p><pre><code class="language-html">&lt;style&gt;span::before { content: &#x27;q&#x27;; }&lt;/style&gt;
+&lt;span&gt;&lt;/span&gt;
+</code></pre><p>Playwright retrieves the actual visible regions of the target element and clicks at the pseudo.</p></li><li><p>Some part of the element is always outside of the viewport.</p><pre><code class="language-html">&lt;style&gt; i { position: absolute; top: -1000px; } &lt;/style&gt;
+&lt;span&gt;&lt;i&gt;one&lt;/i&gt;&lt;b&gt;two&lt;/b&gt;&lt;/span&gt;
+</code></pre><p>Playwright retrieves the actual visible regions of the target element and clicks at the visible part.</p></li><li><p>Inline element is wrapped to the next line.</p><p>Playwright retrieves the actual visible regions of the target element and clicks at one of the inline boxes.</p></li><li><p>Element is rotated with transform.</p><pre><code class="language-html">&lt;button style=&quot;transform: rotate(50deg);&quot;&gt;Click me&lt;/button&gt;
+</code></pre><p>Playwright retrieve the actual visible regions of the target element and clicks at the transformed visible point.</p></li><li><p>Element is deep inside the iframes and/or shadow dom.</p><p>Playwright just clicks it.</p></li></ul><h3 id="dynamic-changes">Dynamic changes</h3><ul><li><p>Element appears dynamically using display or visibility.</p><pre><code class="language-html">&lt;button style=&quot;display: none&quot;&gt;Click me&lt;/button&gt;
+&lt;script&gt;
+  setTimeout(() =&gt; document.querySelector(&#x27;button&#x27;).style.display = &#x27;inline&#x27;, 5000);
+&lt;/script&gt;
+</code></pre><p>Playwright waits for the element to be visible before clicking.</p></li><li><p>Element is animating in.</p><pre><code class="language-html">&lt;style&gt;
+@keyframes move { from { marign-left: 0; } to { margin-left: 100px; } }
+&lt;/style&gt;
+&lt;button style=&quot;animation: 3s linear move forwards;&quot;&gt;Click me&lt;/button&gt;
+</code></pre><p>Playwright waits for the element to stop moving before clicking.</p></li><li><p>Another element is temporary obscuring the target element.</p><pre><code class="language-html">&lt;style&gt;
+  .overlay {
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background: rgba(128, 128, 128, 0.5);
+    transition: opacity 1s;
+  }
+&lt;/style&gt;
+&lt;div style=&quot;position: relative;&quot;&gt;
+  &lt;button&gt;Click me&lt;/button&gt;
+  &lt;div class=overlay&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  const div = document.querySelector(&#x27;.overlay&#x27;);
+  div.addEventListener(&#x27;click&#x27;, () =&gt; {
+    div.style.opacity =&#x27;0&#x27;;
+    setTimeout(() =&gt; { div.remove(); }, 1000);
+  });
+&lt;/script&gt;
+</code></pre><p>For example, the dialog is dismissed and is slowly fading out. Playwright waits for the obscuring element to disappear.
+More precisely, it waits for the target element to actually receive pointer events.</p></li><li><p>Element is replaced with another one after animation.</p><pre><code class="language-html">&lt;style&gt;
+@keyframes move { from { marign-left: 0; } to { margin-left: 100px; } }
+&lt;/style&gt;
+&lt;button style=&quot;animation: 3s linear move forwards;&quot;&gt;Click me&lt;/button&gt;
+&lt;script&gt;
+setTimeout(() =&gt; {
+  const button = document.createElement(&#x27;button&#x27;);
+  button.textContent = &#x27;Click me&#x27;;
+  document.querySelector(&#x27;button&#x27;).replaceWith(button);
+}, 2500);
+&lt;/script&gt;
+</code></pre><p>Playwright waits for the element to be at a stable position, detects that it has been removed from the DOM and retries.</p></li></ul><h3 id="targeting">Targeting</h3><ul><li><p>Element has <code>pointer-events: none</code>.</p><pre><code class="language-html">&lt;label style=&quot;pointer-events:none&quot;&gt;Click target&lt;/label&gt;
+</code></pre><p>Playwright will wait until <code>pointer-events: none</code> goes away or times out. However, if the element is inside of a <code>&lt;button&gt;</code> tag, Playwright will
+wait until the button can accept pointer events.</p><pre><code class="language-html">&lt;button style=&quot;pointer-events: none&quot;&gt;
+  &lt;label&gt;Click target&lt;/label&gt;
+&lt;/button&gt;
+</code></pre></li></ul><h2 id="unsupported-click-scenarios">Unsupported click scenarios</h2><p>Some scenarios here are marked as a bug in the web page - we believe that the page should be fixed because the real user will suffer the same issue. Playwright tries to throw when it&#x27;s possible to detect the issue or timeout otherwise.</p><p>Other scenarios are perfectly fine, but Playwright cannot support them, and we usually suggest another way to handle. If Playwright logic does not work on your page, passing <code>{force: true}</code> option to the click will force the click without any checks. Use it when you know that&#x27;s what you need.</p><h3 id="positioning-1">Positioning</h3><ul><li><p>Element moves outside of the viewport in onscroll.</p><pre><code class="language-html">&lt;div style=&quot;height: 2000px;&quot;&gt;Some content&lt;/div&gt;
+&lt;button&gt;Click me&lt;/button&gt;
+&lt;script&gt;
+window.addEventListener(&#x27;scroll&#x27;, () =&gt; {
+  window.h = (window.h || 2000) + 200;
+  document.querySelector(&#x27;div&#x27;).style.height = window.h + &#x27;px&#x27;;
+});
+&lt;/script&gt;
+</code></pre><p>Playwright throws, considering this a bug in the page.</p></li></ul><h3 id="dynamic-changes-1">Dynamic changes</h3><ul><li><p>Element is constantly animating.</p><pre><code class="language-html">&lt;style&gt;
+@keyframes move { from { marign-left: 0; } to { margin-left: 100px; } }
+200px; } }
+&lt;/style&gt;
+&lt;button style=&quot;animation: 3s linear move infinite;&quot;&gt;Click me&lt;/button&gt;
+</code></pre><p>Playwright waits for the element to be at a stable position and times out. A real user would be able to click in some cases.</p></li><li><p>Element is animating in, but temporarily pauses in the middle.</p><pre><code class="language-html">&lt;style&gt;
+@keyframes move { 0% { marign-left: 0; } 25% { margin-left: 100px; } 50% { margin-left: 100px;} 100% { margin-left: 200px; } }
+&lt;/style&gt;
+&lt;button style=&quot;animation: 3s linear move forwards;&quot;&gt;Click me&lt;/button&gt;
+</code></pre><p>Playwright clicks in the middle of the animation and could actually click at the wrong element. Playwright does not detect this case and does not throw. A real user would probably retry and click again.</p></li><li><p>Element is removed or hidden after <code>fetch</code> / <code>xhr</code> / <code>setTimeout</code>.</p><pre><code class="language-html">&lt;button&gt;Click me&lt;/button&gt;
+&lt;script&gt;
+fetch(location.href).then(() =&gt; document.querySelector(&#x27;button&#x27;).remove());
+&lt;/script&gt;
+</code></pre><p>Playwright clicks the element, and might be able to misclick because it is already hidden. Playwright does not detect this case and does not throw.</p><p>This is a typical flaky failure, because the network fetch is racing against the input driven by Playwright. We suggest to wait for the response to arrive, and click after that. For example, consider a filtered list with an &quot;Apply filters&quot; button that fetches new data, removes all items from the list and inserts new ones.</p><pre><code class="language-js">await Promise.all([
+  // This click triggers network fetch racing with next click.
+  page.click(&#x27;text=Apply filters&#x27;),
+  // This waits for the network response to arrive.
+  page.waitForResponse(&#x27;**/filtered?*&#x27;),
+]);
+// Safe to click now, because network response has been processed
+// and items in the list have been updated.
+await page.click(&#x27;.list-item&#x27;);
+</code></pre></li></ul><h3 id="targeting-1">Targeting</h3><ul><li><p>A transparent overlay handles the input targeted at the content behind it.</p><pre><code class="language-html">&lt;div style=&quot;position: relative;&quot;&gt;
+  &lt;span&gt;Click me&lt;/span&gt;
+  &lt;div style=&quot;position: absolute; left: 0; top: 0; right: 0; bottom: 0&quot; onclick=&quot;...&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>Playwright considers the overlay temporary and times out while waiting for the overlay to disappear.
+When the overlay element is actually handling the input instead of the target element, use <code>{force: true}</code> option to skip the checks and click anyway.</p></li><li><p>Hover handler creates an overlay.</p><pre><code class="language-html">&lt;style&gt;
+  .overlay { display: none; }
+  .container:hover &gt; .overlay { display: block; }
+&lt;/style&gt;
+&lt;div class=container style=&quot;position: relative;&quot;&gt;
+  &lt;button&gt;Click me&lt;/button&gt;
+  &lt;div class=overlay style=&quot;position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: red&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>We consider this a bug in the page, because in most circumstances users will not be able to click the element.
+When the overlay element is actually handling the input instead of the target element, use <code>{force: true}</code> option to skip the checks and click anyway.</p></li></ul></div></article><div class="margin-vert--xl"><div class="row"><div class="col"><a href="https://github.com/facebook/docusaurus/edit/master/website/versioned_docs/version-1.6.0/development/click.md" target="_blank" rel="noreferrer noopener"><svg fill="currentColor" height="1.2em" width="1.2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 40 40" style="margin-right:0.3em;vertical-align:sub"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div></div></div><div class="margin-vert--lg"><nav class="pagination-nav" aria-label="Blog list page navigation"><div class="pagination-nav__item"></div><div class="pagination-nav__item pagination-nav__item--next"></div></nav></div></div></div><div class="col col--3"><div class="tableOfContents_3SO_"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#supported-click-scenarios" class="table-of-contents__link">Supported click scenarios</a><ul><li><a href="#positioning" class="table-of-contents__link">Positioning</a></li><li><a href="#dynamic-changes" class="table-of-contents__link">Dynamic changes</a></li><li><a href="#targeting" class="table-of-contents__link">Targeting</a></li></ul></li><li><a href="#unsupported-click-scenarios" class="table-of-contents__link">Unsupported click scenarios</a><ul><li><a href="#positioning-1" class="table-of-contents__link">Positioning</a></li><li><a href="#dynamic-changes-1" class="table-of-contents__link">Dynamic changes</a></li><li><a href="#targeting-1" class="table-of-contents__link">Targeting</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="row footer__links"><div class="col footer__col"><h4 class="footer__title">Docs</h4><ul class="footer__items"><li class="footer__item"><a class="footer__link-item" href="/pwdev/docs/intro">Getting started</a></li><li class="footer__item"><a class="footer__link-item" href="/pwdev/docs/api/playwright-module">API reference</a></li></ul></div><div class="col footer__col"><h4 class="footer__title">Community</h4><ul class="footer__items"><li class="footer__item"><a href="https://stackoverflow.com/questions/tagged/playwright" target="_blank" rel="noopener noreferrer" class="footer__link-item">Stack Overflow</a></li><li class="footer__item"><a href="https://aka.ms/playwright-slack" target="_blank" rel="noopener noreferrer" class="footer__link-item">Slack</a></li><li class="footer__item"><a href="https://twitter.com/playwrightweb" target="_blank" rel="noopener noreferrer" class="footer__link-item">Twitter</a></li></ul></div><div class="col footer__col"><h4 class="footer__title">More</h4><ul class="footer__items"><li class="footer__item"><a class="footer__link-item" href="/pwdev/blog">Blog</a></li><li class="footer__item"><a href="https://github.com/microsoft/playwright" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub</a></li></ul></div></div><div class="text--center"><div>Copyright © 2020 Microsoft</div></div></div></footer></div>
+<script src="/pwdev/styles.b22cf2e2.js"></script>
+<script src="/pwdev/runtime~main.3a5fc328.js"></script>
+<script src="/pwdev/main.6809d955.js"></script>
+<script src="/pwdev/1.13f92296.js"></script>
+<script src="/pwdev/2.e3aa1740.js"></script>
+<script src="/pwdev/548.5dfb922d.js"></script>
+<script src="/pwdev/551.36aac119.js"></script>
+<script src="/pwdev/1bac6c43.36d9e880.js"></script>
+<script src="/pwdev/17896441.d2fde38e.js"></script>
+<script src="/pwdev/304126c4.89c0daa3.js"></script>
+</body>
+</html>
