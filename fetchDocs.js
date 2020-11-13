@@ -6,7 +6,13 @@ const slugify = require('slugify');
 
 // TODO: pick from automation
 const srcDir = `/Users/arjun/playwright/docs`;
-const destDir = `./docs`;
+const destDir = function() {
+  return process.env.VERSION ? path.join('versioned_docs', `version-${process.env.VERSION}`) : './docs';
+}();
+const sidebarFile = function() {
+  return process.env.VERSION ? path.join('versioned_sidebars', `version-${process.env.VERSION}-sidebars.json`) : 'sidebars.js';
+}();
+const versionsFile = 'versions.json';
 
 function slugger(text) {
   return slugify(text, { lower: true, strict: true });
@@ -103,20 +109,20 @@ function generateApiSidebar(contents) {
   const ul = tokens.find(t => t.type === 'bullet_list_open');
   const listItems = tokens.filter(t => t.type === 'inline' && t.map[0] >= ul.map[0] && t.map[1] <= ul.map[1] );
   const ids = listItems.map(li => li.children.find(c => c.type === 'text')).map(t => t.content).map(slugger);
-  return {
-    api: [{
-      type: 'category',
-      label: "API reference",
-      items: ids.map(id => `api/${id}`),
-      collapsed: false
-    }]
-  }
+  const prefix = process.env.VERSION ? `version-${process.env.VERSION}/api/` : 'api/';
+  return [{
+    type: 'category',
+    label: "API reference",
+    items: ids.map(id => ({ type: 'doc', id: `${prefix}${id}` })),
+    collapsed: false
+  }]
 }
 
 function generateDocsSidebar(contents) {
   const tokens = md.parse(contents, {});
   const ol = tokens.find(t => t.type === 'ordered_list_open');
   const headings = tokens.filter(t => t.type === 'inline' && t.map[0] >= ol.map[0] && t.map[1] <= ol.map[1] && t.level === 3);
+  const prefix = process.env.VERSION ? `version-${process.env.VERSION}/` : '';
 
   function subList(headingToken) {
     const ul = tokens.find(t => t.type === 'bullet_list_open' && t.map[0] >= headingToken.map[0]);
@@ -125,11 +131,22 @@ function generateDocsSidebar(contents) {
     return {
       type: 'category',
       label: headingToken.content,
-      items: hrefs.filter(h => h.endsWith('.md')).map(h => h.replace('./', '').replace('.md', '')).filter(h => h !== 'api'),
+      items: hrefs.filter(h => h.endsWith('.md')).map(h => h.replace('./', '').replace('.md', '')).filter(h => h !== 'api').map(id => ({ type: 'doc', id: `${prefix}${id}` })),
       collapsed: false
     }
   }
-  return { docs: headings.map(subList) };
+  return headings.map(subList);
+}
+
+function writeSidebarFile(apiSidebar, docsSidebar) {
+  const sidebar = {};
+  const docsKey = process.env.VERSION ? `version-${process.env.VERSION}/docs` : 'docs';
+  const apiKey = process.env.VERSION ? `version-${process.env.VERSION}/api` : 'api';
+  sidebar[docsKey] = docsSidebar;
+  sidebar[apiKey] = apiSidebar;
+  const content = process.env.VERSION ? JSON.stringify(sidebar) : `module.exports = ${JSON.stringify(sidebar)};`;
+  fse.ensureFileSync(sidebarFile);
+  fse.writeFileSync(sidebarFile, content);
 }
 
 // Main
@@ -149,10 +166,19 @@ files.forEach(filePath => {
   writeFrontmatter(filePath);
   closeTags(filePath);
 });
+const docsSidebar = generateDocsSidebar(fse.readFileSync(path.join(destDir, 'README.md')).toString())
 
 // Create sidebar
-const sidebar = {
-  ...generateDocsSidebar(fse.readFileSync(path.join(destDir, 'README.md')).toString()),
-  ...apiSidebar
-};
-fse.writeFileSync('sidebars.js', `module.exports = ${JSON.stringify(sidebar)};`);
+writeSidebarFile(apiSidebar, docsSidebar);
+
+if (process.env.VERSION) {
+  let newVersions = [];
+  if (fse.existsSync(versionsFile)) {
+    const versions = JSON.parse(fse.readFileSync('versions.json').toString());
+    versions.unshift(process.env.VERSION);
+    newVersions = versions;
+  } else {
+    newVersions = [process.env.VERSION];
+  }
+  fse.writeFileSync('versions.json', JSON.stringify(newVersions));
+}
