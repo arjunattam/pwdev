@@ -7,6 +7,13 @@ function param(name, url = window.location.href) {
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-// TODO: use versions
-// http://localhost:3000/#version=master&path=docs%2Femulation.md&q=geolocation
-window.location.href = `${param('path').replace('.md', '')}#${param('q')}`;
+const path = param('path');
+const q = param('q');
+const version = param('version');
+console.log('redirection', path, q, version);
+
+if (path) {
+  // TODO: use versions
+  // http://localhost:3000/#version=master&path=docs%2Femulation.md&q=geolocation
+  window.location.href = `${param('path').replace('.md', '')}#${param('q')}`;
+}
