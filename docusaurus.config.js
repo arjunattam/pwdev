@@ -2,11 +2,11 @@ module.exports = {
   title: 'Playwright',
   tagline: 'Fast and reliable end-to-end testing for modern web apps',
   url: 'https://arjunattam.github.io',
-  baseUrl: '/playwright-docusaurus/',
+  baseUrl: '/pwdev/',
   onBrokenLinks: 'log',
   favicon: 'img/playwright-logo.svg',
   organizationName: 'arjunattam', // Usually your GitHub org/user name.
-  projectName: 'playwright-docusaurus', // Usually your repo name.
+  projectName: 'pwdev', // Usually your repo name.
   scripts: ['js/redirection.js'],
   themeConfig: {
     navbar: {
