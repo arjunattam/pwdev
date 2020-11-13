@@ -1,17 +1,21 @@
 ---
 slug: hello-world
-title: Hello
-author: Endilie Yacop Sucipto
-author_title: Maintainer of Docusaurus
-author_url: https://github.com/endiliey
-author_image_url: https://avatars1.githubusercontent.com/u/17883920?s=460&v=4
-tags: [hello, docusaurus]
+title: Playwright 1.6
+# author: Endilie Yacop Sucipto
+# author_title: Maintainer of Docusaurus
+# author_url: https://github.com/endiliey
+# author_image_url: https://avatars1.githubusercontent.com/u/17883920?s=460&v=4
+tags: [releases]
 ---
 
-Welcome to this blog. This blog is created with [**Docusaurus 2 alpha**](https://v2.docusaurus.io/).
+Playwright 1.6 is available today, with improvements to network capabilities: inspect WebSocket connections, export network activity as HAR and access resource timing for network responses. This release also adds a new API for touchscreen taps. Like other input methods, touchscreen taps auto-wait for the underlying element to be ready, to improve the reliability of automation.
 
 <!--truncate-->
 
-This is a test post.
+Inspect WebSocket connections
 
-A whole bunch of other information.
+Real-time
+
+Network resource timing and HAR exports
+
+Touchscreen tap

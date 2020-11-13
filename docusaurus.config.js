@@ -1,32 +1,51 @@
 module.exports = {
-  title: 'My Site',
-  tagline: 'The tagline of my site',
-  url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
-  onBrokenLinks: 'throw',
-  favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  title: 'Playwright',
+  tagline: 'Fast and reliable end-to-end testing for modern web apps',
+  url: 'https://arjunattam.github.io',
+  baseUrl: '/playwright-docusaurus/',
+  onBrokenLinks: 'log',
+  favicon: 'img/playwright-logo.svg',
+  organizationName: 'arjunattam', // Usually your GitHub org/user name.
+  projectName: 'playwright-docusaurus', // Usually your repo name.
+  scripts: ['js/redirection.js'],
   themeConfig: {
     navbar: {
-      title: 'My Site',
+      title: 'Playwright',
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: 'Playwright logo',
+        src: 'img/playwright-logo.svg',
       },
       items: [
         {
-          to: 'docs/',
-          activeBasePath: 'docs',
+          type: 'doc',
+          docId: 'intro',
           label: 'Docs',
           position: 'left',
         },
-        {to: 'blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          type: 'doc',
+          docId: 'api/playwright-module',
+          label: 'API',
+          position: 'left',
+        },
+        {
+          to: 'blog', label: 'Blog', position: 'right'
+        },
+        {
+          href: 'https://github.com/microsoft/playwright',
           label: 'GitHub',
           position: 'right',
         },
+        {
+          type: 'docsVersionDropdown',
+          position: 'left',
+          // Add additional dropdown items at the beginning/end of the dropdown.
+          dropdownItemsBefore: [],
+          dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
+
+          // Do not add the link active class when browsing docs.
+          dropdownActiveClassDisabled: true,
+        }
       ],
     },
     footer: {
@@ -36,12 +55,12 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'Style Guide',
-              to: 'docs/',
+              label: 'Getting started',
+              to: 'docs/intro',
             },
             {
-              label: 'Second Doc',
-              to: 'docs/doc2/',
+              label: 'API reference',
+              to: 'docs/api/playwright-module',
             },
           ],
         },
@@ -50,15 +69,15 @@ module.exports = {
           items: [
             {
               label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              href: 'https://stackoverflow.com/questions/tagged/playwright',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              label: 'Slack',
+              href: 'https://aka.ms/playwright-slack',
             },
             {
               label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              href: 'https://twitter.com/playwrightweb',
             },
           ],
         },
@@ -71,12 +90,22 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/microsoft/playwright',
             },
           ],
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Microsoft`,
+    },
+    algolia: {
+      apiKey: 'c85f496c6eea71808027d42111ac550c',
+      indexName: 'playwright',
+
+      // Optional: see doc section bellow
+      contextualSearch: true,
+
+      // Optional: Algolia search parameters
+      searchParameters: {},
     },
   },
   presets: [
@@ -87,7 +116,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+            'https://github.com/facebook/docusaurus/edit/master/website/'
         },
         blog: {
           showReadingTime: true,
