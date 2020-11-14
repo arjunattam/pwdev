@@ -1,0 +1,28 @@
+name: Deploy v2 to preview
+
+on:
+  push:
+    branches:
+    # change for playwright.dev
+    - main
+
+jobs:
+  update-results:
+    runs-on: ubuntu-latest
+    steps:
+      # checkout website code
+      - uses: actions/checkout@v2
+
+      # checkout content repo
+      - uses: actions/checkout@v2
+        repository: microsoft/playwright
+        path: content-repo
+        fetch-depth: 0
+
+      - uses: actions/setup-node@v1
+      - run: npm install
+
+      # setup content for master
+      - run: node scripts/fetchContent.js
+        env:
+          SRC_DIR: content-repo/docs

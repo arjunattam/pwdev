@@ -6,19 +6,18 @@ const slugify = require("slugify");
 const sh = require("shelljs");
 const semver = require("semver");
 
-// TODO: pick from automation
-const srcDir = `/Users/arjun/playwright/docs`;
+const { VERSION, SRC_DIR } = process.env;
+if (!SRC_DIR) {
+  console.log("Use SRC_DIR to specify docs location, e.g. path-to-repo/docs.");
+  process.exit(1);
+}
+const srcDir = SRC_DIR;
 const destDir = (function () {
-  return process.env.VERSION
-    ? path.join("versioned_docs", `version-${process.env.VERSION}`)
-    : "./docs";
+  return VERSION ? path.join("versioned_docs", `version-${VERSION}`) : "./docs";
 })();
 const sidebarFile = (function () {
-  return process.env.VERSION
-    ? path.join(
-        "versioned_sidebars",
-        `version-${process.env.VERSION}-sidebars.json`
-      )
+  return VERSION
+    ? path.join("versioned_sidebars", `version-${VERSION}-sidebars.json`)
     : "sidebars.js";
 })();
 const versionsFile = "versions.json";
@@ -130,9 +129,7 @@ function generateApiSidebar(contents) {
     .map((li) => li.children.find((c) => c.type === "text"))
     .map((t) => t.content)
     .map(slugger);
-  const prefix = process.env.VERSION
-    ? `version-${process.env.VERSION}/api/`
-    : "api/";
+  const prefix = VERSION ? `version-${VERSION}/api/` : "api/";
   return [
     {
       type: "category",
@@ -155,7 +152,7 @@ function generateDocsSidebar(contents) {
       t.map[1] <= ol.map[1] &&
       t.level === 3
   );
-  const prefix = process.env.VERSION ? `version-${process.env.VERSION}/` : "";
+  const prefix = VERSION ? `version-${VERSION}/` : "";
 
   function headingContent(token) {
     return token.children.find((t) => t.type === "text").content;
@@ -192,7 +189,7 @@ function generateDocsSidebar(contents) {
     };
   }
 
-  const hasCategories = !process.env.VERSION || !semver.lt(process.env.VERSION, "1.3.0");
+  const hasCategories = !VERSION || !semver.lt(VERSION, "1.3.0");
   return hasCategories
     ? headings.map(subList).filter(Boolean)
     : headings.map((h) => ({
@@ -204,15 +201,11 @@ function generateDocsSidebar(contents) {
 
 function writeSidebarFile(apiSidebar, docsSidebar) {
   const sidebar = {};
-  const docsKey = process.env.VERSION
-    ? `version-${process.env.VERSION}/docs`
-    : "docs";
-  const apiKey = process.env.VERSION
-    ? `version-${process.env.VERSION}/api`
-    : "api";
+  const docsKey = VERSION ? `version-${VERSION}/docs` : "docs";
+  const apiKey = VERSION ? `version-${VERSION}/api` : "api";
   sidebar[docsKey] = docsSidebar;
   sidebar[apiKey] = apiSidebar;
-  const content = process.env.VERSION
+  const content = VERSION
     ? JSON.stringify(sidebar)
     : `module.exports = ${JSON.stringify(sidebar)};`;
   fse.ensureFileSync(sidebarFile);
@@ -222,7 +215,7 @@ function writeSidebarFile(apiSidebar, docsSidebar) {
 function copyFiles() {
   const currentDir = sh.pwd().stdout;
   sh.cd(srcDir);
-  const tag = process.env.VERSION ? `tags/v${process.env.VERSION}` : `master`;
+  const tag = VERSION ? `tags/v${VERSION}` : `master`;
   const result = sh.exec(`git checkout ${tag}`);
   if (result.code !== 0) {
     console.warn(`git checkout to ${tag} failed. Check source repo.`);
@@ -230,6 +223,19 @@ function copyFiles() {
   }
   sh.cd(currentDir);
   fse.copySync(srcDir, destDir);
+}
+
+function writeVersionsFile() {
+  let newVersions = [];
+  if (fse.existsSync(versionsFile)) {
+    const versions = JSON.parse(fse.readFileSync("versions.json").toString());
+    versions.unshift(VERSION);
+    newVersions = versions;
+  } else {
+    newVersions = [VERSION];
+  }
+  const uniqVersions = semver.rsort([...new Set(newVersions)]);
+  fse.writeFileSync("versions.json", JSON.stringify(uniqVersions));
 }
 
 // Main
@@ -256,15 +262,6 @@ const docsSidebar = generateDocsSidebar(
 // Create sidebar
 writeSidebarFile(apiSidebar, docsSidebar);
 
-if (process.env.VERSION) {
-  let newVersions = [];
-  if (fse.existsSync(versionsFile)) {
-    const versions = JSON.parse(fse.readFileSync("versions.json").toString());
-    versions.unshift(process.env.VERSION);
-    newVersions = versions;
-  } else {
-    newVersions = [process.env.VERSION];
-  }
-  const uniqVersions = semver.rsort([...new Set(newVersions)]);
-  fse.writeFileSync("versions.json", JSON.stringify(uniqVersions));
+if (VERSION) {
+  writeVersionsFile();
 }

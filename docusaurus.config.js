@@ -1,13 +1,16 @@
 module.exports = {
   title: 'Playwright',
   tagline: 'Fast and reliable end-to-end testing for modern web apps',
-  url: 'https://arjunattam.github.io',
-  baseUrl: '/pwdev/',
+
+  // Repo config for GitHub Pages
+  url: 'https://microsoft.github.io',
+  baseUrl: '/playwright/',
+  organizationName: 'microsoft',
+  projectName: 'playwright',
+
   onBrokenLinks: 'log',
-  favicon: 'img/playwright-logo.svg',
-  organizationName: 'arjunattam', // Usually your GitHub org/user name.
-  projectName: 'pwdev', // Usually your repo name.
   scripts: ['js/redirection.js'],
+  favicon: 'img/playwright-logo.svg',
   themeConfig: {
     navbar: {
       title: 'Playwright',
@@ -42,7 +45,6 @@ module.exports = {
           // Add additional dropdown items at the beginning/end of the dropdown.
           dropdownItemsBefore: [],
           dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
-
           // Do not add the link active class when browsing docs.
           dropdownActiveClassDisabled: true,
         }
@@ -100,12 +102,8 @@ module.exports = {
     algolia: {
       apiKey: 'c85f496c6eea71808027d42111ac550c',
       indexName: 'playwright',
-
-      // Optional: see doc section bellow
-      contextualSearch: true,
-
-      // Optional: Algolia search parameters
-      searchParameters: {},
+      // contextualSearch: true,
+      // searchParameters: {},
     },
   },
   presets: [
