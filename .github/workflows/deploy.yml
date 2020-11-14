@@ -42,12 +42,14 @@ jobs:
       - run: git checkout gh-pages
         working-directory: content-repo
       - run: ls -alh
+        working-directory: content-repo
+      - run: cp -fR build/ content-repo/
 
       # pushing to gh-pages branch of microsoft/playwright repo
-      # - run: stefanzweifel/git-auto-commit-action@v4
-      #   with:
-      #     branch: gh-pages
-      #     repository: content-repo
+      - run: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: gh-pages
+          repository: content-repo
 
       #   env:
       #     GIT_USER: arjunattam
