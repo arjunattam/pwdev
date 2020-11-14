@@ -15,9 +15,10 @@ jobs:
 
       # checkout content repo
       - uses: actions/checkout@v2
-        repository: microsoft/playwright
-        path: content-repo
-        fetch-depth: 0
+        with:
+          repository: microsoft/playwright
+          path: content-repo
+          fetch-depth: 0
 
       - uses: actions/setup-node@v1
       - run: npm install
