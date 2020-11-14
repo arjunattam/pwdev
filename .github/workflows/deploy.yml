@@ -19,6 +19,8 @@ jobs:
           repository: microsoft/playwright
           path: content-repo
           fetch-depth: 0
+          # same token is used by commit action later on
+          token: ${{ secrets.PAT }}
 
       - uses: actions/setup-node@v1
         with:
