@@ -40,12 +40,13 @@ jobs:
       - run: npm run build
 
       # replace gh-pages branch of content-repo
-      # with new build
+      # with the new build
       - run: git checkout gh-pages
         working-directory: content-repo
       - run: ls -alh
         working-directory: content-repo
-      - run: rm -rf *
+      - name: Clean existing files
+        run: rm -rf *
         working-directory: content-repo
       - run: cp -a build/. content-repo/
       - run: ls -alh
@@ -54,7 +55,7 @@ jobs:
         working-directory: content-repo
 
       # pushing to gh-pages branch of microsoft/playwright repo
-      # - uses: stefanzweifel/git-auto-commit-action@v4
-      #   with:
-      #     branch: gh-pages
-      #     repository: content-repo
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: gh-pages
+          repository: content-repo
