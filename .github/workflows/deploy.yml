@@ -45,15 +45,16 @@ jobs:
         working-directory: content-repo
       - run: ls -alh
         working-directory: content-repo
-      - run: cp -fR build/ content-repo/
+      - run: rm -rf *
+        working-directory: content-repo
+      - run: cp -a build/. content-repo/
+      - run: ls -alh
+        working-directory: content-repo
+      - run: git status
+        working-directory: content-repo
 
       # pushing to gh-pages branch of microsoft/playwright repo
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          branch: gh-pages
-          repository: content-repo
-
-      #   env:
-      #     GIT_USER: arjunattam
-      #     CURRENT_BRANCH: main
-      #     USE_SSH: false
+      # - uses: stefanzweifel/git-auto-commit-action@v4
+      #   with:
+      #     branch: gh-pages
+      #     repository: content-repo
