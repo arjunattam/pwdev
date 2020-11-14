@@ -40,7 +40,7 @@ jobs:
       # replace gh-pages branch of content-repo
       # with new build
       - run: git checkout gh-pages
-          working-directory: content-repo
+        working-directory: content-repo
       - run: ls -alh
 
       # pushing to gh-pages branch of microsoft/playwright repo
