@@ -7,7 +7,7 @@ on:
     - main
 
 jobs:
-  update-results:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       # checkout website code
@@ -23,7 +23,17 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install
 
-      # setup content for master
+      # setup content for versions
       - run: node scripts/fetchContent.js
         env:
           SRC_DIR: content-repo/docs
+      - run: node scripts/fetchContent.js
+        env:
+          SRC_DIR: content-repo/docs
+          VERSION: '1.6.1'
+      
+      - run: npm run deploy
+        env:
+          GIT_USER: arjunattam
+          CURRENT_BRANCH: main
+          USE_SSH: false
