@@ -21,6 +21,9 @@ jobs:
           fetch-depth: 0
 
       - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+
       - run: npm install
 
       # setup content for versions
@@ -32,8 +35,21 @@ jobs:
           SRC_DIR: content-repo/docs
           VERSION: '1.6.1'
       
-      - run: npm run deploy
-        env:
-          GIT_USER: arjunattam
-          CURRENT_BRANCH: main
-          USE_SSH: false
+      - run: npm run build
+
+      # replace gh-pages branch of content-repo
+      # with new build
+      - run: git checkout gh-pages
+          working-directory: content-repo
+      - run: ls -alh
+
+      # pushing to gh-pages branch of microsoft/playwright repo
+      # - run: stefanzweifel/git-auto-commit-action@v4
+      #   with:
+      #     branch: gh-pages
+      #     repository: content-repo
+
+      #   env:
+      #     GIT_USER: arjunattam
+      #     CURRENT_BRANCH: main
+      #     USE_SSH: false
